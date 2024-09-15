@@ -21,7 +21,7 @@ app.get('/index',(req,res)=>{
     res.sendFile(path.join(__dirname,'build','index.html'));
 })
 
-app.get("/github",(req,res)=>{
+app.get('/github',(req,res)=>{
     res.send("this is github page")
 })
 
