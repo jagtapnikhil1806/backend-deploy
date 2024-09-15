@@ -1,11 +1,24 @@
 import express from 'express'
-require('dotenv').config()
+import {config} from 'dotenv'
+import path from 'path'
+import { fileURLToPath } from 'url';
+
+config();
+
+const __filename=fileURLToPath(import.meta.url)
+ const __dirname=path.dirname(__filename)
 
 const app = express()
-const port =process.env.PORT || 3000;
+const port = process.env.PORT ||4000;
+
+app.use(express.static(path.join(__dirname,'build')))
 
 app.get("/",(req,res)=>{
     res.send("this is me")
+})
+
+app.get('/index',(req,res)=>{
+    res.sendFile(path.join(__dirname,'build','index.html'));
 })
 
 app.get("/github",(req,res)=>{
